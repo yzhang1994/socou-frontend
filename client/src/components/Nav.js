@@ -80,7 +80,7 @@ function Nav(props) {
           {/* <Typography variant="h6" color="inherit" className={classes.grow}>
             socou!
           </Typography> */}
-          <img style={{ height: 48 }} src="../../../static/images/logo.png" />
+          <img style={{ height: 44 }} src="../../../static/images/logo.png" />
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>

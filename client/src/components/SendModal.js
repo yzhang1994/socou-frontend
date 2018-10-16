@@ -79,7 +79,7 @@ class SimpleModal extends Component {
                 </Tabs>
 
                 <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
-                  { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
+                  { value === 0 ? ' this coupon to your friend!' : 'Give this coupon to a new friend!' }
                 </Typography>
                 { value === 0
                   ? <FriendList />
@@ -105,7 +105,7 @@ class SimpleModal extends Component {
             )
             }
             <Button variant="contained" color="primary" size="large" onClick={onSend}>
-              { tabIndex === 0 ? 'Send Coupon' : 'Use Coupon' }
+              { tabIndex === 0 ? 'Give Coupon' : 'Use Coupon' }
             </Button>
         </div>
       </Modal>

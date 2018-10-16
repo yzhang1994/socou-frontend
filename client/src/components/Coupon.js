@@ -149,7 +149,7 @@ class CouponCard extends Component {
               onClick={onClickCoupon}
               className={tabIndex === 0 ? classes.sendButton : classes.useButton}
             >
-              Send
+              { tabIndex === 0 ? 'Give' : 'Use' }
             </Button>
           </CardActions>
         </div>
