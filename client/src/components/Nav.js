@@ -10,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import PersonIcon from '@material-ui/icons/PersonRounded';
 import InputBase from '@material-ui/core/InputBase';
+import Avatar from '@material-ui/core/Avatar';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
 const styles = theme => ({
@@ -76,9 +77,10 @@ function Nav(props) {
           {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton> */}
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          {/* <Typography variant="h6" color="inherit" className={classes.grow}>
             socou!
-          </Typography>
+          </Typography> */}
+          <img style={{ height: 48 }} src="../../../static/images/logo.png" />
           <div className={classes.grow} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -92,7 +94,8 @@ function Nav(props) {
               }}
             />
           </div>
-          <Button color="secondary" variant="contained"><PersonIcon /></Button>
+          {/* <Button color="secondary" variant="contained"><PersonIcon /></Button> */}
+          <Avatar alt="Person" src={`/static/images/p4.jpg`} />
         </Toolbar>
       </AppBar>
     </div>

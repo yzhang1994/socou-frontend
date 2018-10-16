@@ -8,7 +8,7 @@ import SendModal from './SendModal';
 import SocouAbi from '../../../static/contracts/Socou.json'
 import web3import from 'web3'
 
-const SOCOU_ADDRESS = '0x64938F93D6bAFFA10b7e030c1Cf651b52C79E1FA'
+const SOCOU_ADDRESS = '0x26BF395c4C2c73923563C24861833B0A24703F4D'
 
 const getWeb3 = () => new web3import(window.web3.currentProvider) 
 const getSocouInstance = () => {
