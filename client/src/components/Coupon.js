@@ -78,7 +78,9 @@ const styles = theme => ({
   },
   sendButton: {
     marginTop: '30px',
-  }
+  },
+  useButton: {
+  },
 });
 
 class CouponCard extends Component {
@@ -110,6 +112,11 @@ class CouponCard extends Component {
       allAvatars.splice(choice, 1);
     }
 
+    const friendAvatars = (tabIndex === 0 ?
+        <FriendAvatars people={avatars} text="love this." /> :
+        null
+    );
+
     return (
       <Card className={classes.card}>
         <IconButton className={classes.loveButton}>
@@ -130,7 +137,7 @@ class CouponCard extends Component {
                 { tabIndex === 0 ? '??' : discount } % OFF
               </span>
             </Typography>
-            <FriendAvatars people={avatars} text="love this." />
+            {friendAvatars}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             {/* <IconButton aria-label="Share">
@@ -140,7 +147,7 @@ class CouponCard extends Component {
               variant="contained"
               color="primary"
               onClick={onClickCoupon}
-              className={classes.sendButton}
+              className={tabIndex === 0 ? classes.sendButton : classes.useButton}
             >
               Send
             </Button>
