@@ -35,6 +35,9 @@ const styles = {
   philanthropist: {
     backgroundColor: 'green',
   },
+  shopName: {
+    color: '#007aff',
+  },
 };
 
 const names = [
@@ -88,7 +91,12 @@ class FriendsItem extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;
               {giverChip}
             </Typography>
-            <Typography>{name} {this.props.eventText}.</Typography>
+            <Typography>
+              {name} {this.props.eventText}&nbsp;
+              <a href='javascript:void(0)' className={classes.shopName}>
+                {this.props.shopName}
+              </a>.
+            </Typography>
           </div>
         </CardContent>
       </Card>
@@ -100,6 +108,7 @@ FriendsItem.propTypes = {
   classes: PropTypes.object.isRequired,
   person: PropTypes.number.isRequired,
   eventText: PropTypes.string.isRequired,
+  shopName: PropTypes.string.isRequired,
   timeText: PropTypes.string,
 };
 
