@@ -37,14 +37,14 @@ class SimpleModal extends Component {
   };
 
   render() {
-    const { classes, isModalOpen } = this.props;
+    const { classes, isModalOpen, openModal } = this.props;
     const { value } = this.state
     return (
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         open={isModalOpen}
-        onClose={this.handleClose}
+        onClose={openModal(false)}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <div className={classes.paper}>
@@ -62,7 +62,7 @@ class SimpleModal extends Component {
             { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
           </Typography>
           { value === 0 ? <FriendList /> : <NewFriendForm /> }
-          <Button variant="contained" color="primary" size="large">Send</Button>
+          <Button variant="contained" color="primary" size="large" onClick={openModal(false)}>Send</Button>
         </div>
       </Modal>
     );
@@ -72,6 +72,7 @@ class SimpleModal extends Component {
 SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.

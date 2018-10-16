@@ -24,7 +24,7 @@ class App extends Component {
         <Nav />
         <CouponTabs />
         <CouponGrid openModal={this.openModal}/>
-        <SendModal isModalOpen={true} />
+        <SendModal openModal={this.openModal} isModalOpen={isModalOpen} />
       </div>
     )
   }

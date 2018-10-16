@@ -62,6 +62,7 @@ class CouponCard extends Component {
       description,
       offer,
       title,
+      onClickCoupon,
     } = this.props;
 
     return (
@@ -94,10 +95,7 @@ class CouponCard extends Component {
           {/* <IconButton aria-label="Share">
             <ShareIcon />
           </IconButton> */}
-          <Button variant="contained" color="primary">
-              {/* <IconButton aria-label="Add to favorites">
-                <CardGiftcardIcon color="hi" />
-              </IconButton> */}
+          <Button variant="contained" color="primary" onClick={onClickCoupon}>
             Send
           </Button>
           <IconButton
@@ -127,6 +125,7 @@ CouponCard.propTypes = {
   description: PropTypes.string,
   offer: PropTypes.string,
   title: PropTypes.string,
+  onClickCoupon: PropTypes.func.isRequired,
 };
 
 CouponCard.defaultProps = {

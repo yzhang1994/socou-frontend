@@ -17,11 +17,13 @@ const styles = theme => ({
   },
 });
 
-const CouponGrid = ({ classes }) => (
+const CouponGrid = ({ classes, openModal }) => (
   <div className={classes.root}>
     <Grid container spacing={24}>
       <Grid item xs={12} sm={12} md={6} lg={4}>
-        <Coupon />
+        <Coupon
+          onClickCoupon={openModal(true)}
+        />
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={4}>
         <Coupon />
@@ -44,6 +46,7 @@ const CouponGrid = ({ classes }) => (
 
 CouponGrid.propTypes = {
   classes: PropTypes.object.isRequired,
+  openModal: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(CouponGrid);
