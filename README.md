@@ -1,6 +1,6 @@
 ![screenshot](https://github.com/CoinAlpha/socou-frontend/blob/master/static/images/screenshot.png)
 
-# socol-frontend
+# dApp
 
 ## Installation
 ```yarn install```
@@ -10,3 +10,6 @@
 
 In another Terminal window:
 ``` yarn start```
+
+# Smart contract
+[Go to repo](https://github.com/CoinAlpha/socou-backend)
