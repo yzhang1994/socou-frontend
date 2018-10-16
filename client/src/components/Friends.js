@@ -19,19 +19,34 @@ class Friends extends React.Component {
     return (
       <Grid container spacing={8} className={classes.root} >
         <Grid item xs={12}>
-          <FriendsItem />
+          <FriendsItem
+            person={1}
+            eventText="loves See's Candy"
+          />
         </Grid>
         <Grid item xs={12}>
-          <FriendsItem />
+          <FriendsItem
+            person={2}
+            eventText="received a coupon for Alexander's Steakhouse"
+          />
         </Grid>
         <Grid item xs={12}>
-          <FriendsItem />
+          <FriendsItem
+            person={6}
+            eventText="received a coupon for Shake Shack"
+          />
         </Grid>
         <Grid item xs={12}>
-          <FriendsItem />
+          <FriendsItem
+            person={4}
+            eventText="loves Fry's Electronics"
+          />
         </Grid>
         <Grid item xs={12}>
-          <FriendsItem />
+          <FriendsItem
+            person={3}
+            eventText="received a coupon for Home Depot"
+          />
         </Grid>
       </Grid>
     );
