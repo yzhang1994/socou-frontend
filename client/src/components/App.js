@@ -94,7 +94,15 @@ class App extends Component {
     const { selectedCouponId } = this.state
     console.log('useCoupon', selectedCouponId)
     const socouInstance = getSocouInstance()
-    return socouInstance.methods.useCoupon(selectedCouponId).call();
+    return this.web3.eth.getAccounts()
+    .then((accounts) => {
+      return socouInstance.methods.useCoupon(selectedCouponId).send({
+        from: accounts[0],
+      })
+    })
+    .then(receipt => {
+    console.log(receipt);
+  });
   }
 
   openModal = (isModalOpen = true) => (e) => {
