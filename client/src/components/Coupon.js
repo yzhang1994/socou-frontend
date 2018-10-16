@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteOutlined from '@material-ui/icons/FavoriteBorder';
 import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -46,14 +46,20 @@ const styles = theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  brandName: {
+    fontSize: "1.2em",
+  },
+  loveButton: {
+    float: "left",
+    color: "white",
+    backgroundColor: "rgba(0,0,0,0.2)",
+    margin: "4px",
+    padding: "8px",
+  }
 });
 
 class CouponCard extends Component {
   state = { expanded: false };
-
-  handleExpandClick = () => {
-    this.setState(state => ({ expanded: !state.expanded }));
-  };
 
   render() {
     const {
@@ -67,26 +73,17 @@ class CouponCard extends Component {
 
     return (
       <Card className={classes.card}>
-        <CardHeader
-          // avatar={
-          //   <Avatar aria-label="Recipe" className={classes.avatar}>
-          //     { title && title.substr(0, 1) }
-          //   </Avatar>
-          // }
-          title={title}
-          subheader={`Expires on ${date}`}
-          action={
-            <IconButton>
-              <FavoriteIcon />
-            </IconButton>
-          }
-        />
+        <IconButton className={classes.loveButton}>
+          <FavoriteOutlined />
+        </IconButton>
         <CardMedia
           className={classes.media}
           image="/static/images/paella.jpg"
           title="paella"
-        />
+        >
+        </CardMedia>
         <CardContent>
+          <Typography className={classes.brandName}>{title}</Typography>
           <Typography component="p">
             { offer }
           </Typography>
@@ -98,22 +95,7 @@ class CouponCard extends Component {
           <Button variant="contained" color="primary" onClick={onClickCoupon}>
             Send
           </Button>
-          <IconButton
-            className={classnames(classes.expand, {
-              [classes.expandOpen]: this.state.expanded,
-            })}
-            onClick={this.handleExpandClick}
-            aria-expanded={this.state.expanded}
-            aria-label="Show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
         </CardActions>
-        <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>{ description }</Typography>
-          </CardContent>
-        </Collapse>
       </Card>
     );
   }
