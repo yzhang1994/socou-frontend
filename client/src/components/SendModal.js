@@ -11,6 +11,9 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import FriendList from './FriendList';
 import TextField from '@material-ui/core/TextField';
 import NewFriendForm from './NewFriendForm';
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
 
 const styles = theme => ({
   paper: {
@@ -25,6 +28,10 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  media: {
+    height: 0,
+    paddingTop: '100%',
   },
 });
 
@@ -43,7 +50,7 @@ class SimpleModal extends Component {
   }
 
   render() {
-    const { action, classes, isModalOpen, openModal } = this.props;
+    const { action, classes, isModalOpen, openModal, tabIndex } = this.props;
     const { input, value } = this.state
     const onSend = () => {
       action(input)
@@ -58,28 +65,48 @@ class SimpleModal extends Component {
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <div className={classes.paper}>
-          <Tabs
-            value={value}
-            indicatorColor="primary"
-            textColor="primary"
-            onChange={this.handleChange}
-          >
-            <Tab icon={<FavoriteIcon />} label="Friends List" />
-            <Tab icon={<PersonPinIcon />} label="Add New Friend" />
-          </Tabs>
+          { tabIndex === 0
+            ? (
+              <Fragment>
+                <Tabs
+                value={value}
+                indicatorColor="primary"
+                textColor="primary"
+                onChange={this.handleChange}
+                >
+                  <Tab icon={<FavoriteIcon />} label="Friends List" />
+                  <Tab icon={<PersonPinIcon />} label="Add New Friend" />
+                </Tabs>
 
-          <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
-            { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
-          </Typography>
-          { value === 0
-            ? <FriendList />
-            : (
-            <div style={{ padding: 16, paddingBottom: 32, width: '100%' }}>
-              <TextField onChange={this.handleInputChange} fullWidth label="Hashgraph Address" />
-            </div>
+                <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
+                  { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
+                </Typography>
+                { value === 0
+                  ? <FriendList />
+                  : (
+                  <div style={{ padding: 16, paddingBottom: 32, width: '100%' }}>
+                    <TextField onChange={this.handleInputChange} fullWidth label="Hashgraph Address" />
+                  </div>
+                  )
+                }
+              </Fragment>
             )
-          }
-          <Button variant="contained" color="primary" size="large" onClick={onSend}>Send</Button>
+          : (
+              <Card>
+                <CardHeader
+                  title="Scan this QR Code to use coupon"
+                />
+                <CardMedia
+                  className={classes.media}
+                  image="/static/images/QR.png"
+                  title="QR CODE"
+                />
+              </Card>
+            )
+            }
+            <Button variant="contained" color="primary" size="large" onClick={onSend}>
+              { tabIndex === 0 ? 'Send Coupon' : 'Use Coupon' }
+            </Button>
         </div>
       </Modal>
     );
