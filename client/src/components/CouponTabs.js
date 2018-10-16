@@ -32,10 +32,9 @@ class CenteredTabs extends React.Component {
           textColor="primary"
           centered
         >
-          <Tab label="Locked" />
-          <Tab label="Unlocked" />
-          <Tab label="History" />
-          <Tab label="Social Feed" />
+          <Tab label="Giving" />
+          <Tab label="Received" />
+          <Tab label="Friends" />
         </Tabs>
       </Paper>
     );
