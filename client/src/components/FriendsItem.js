@@ -29,6 +29,12 @@ const styles = {
     fontSize: '1.2em',
     marginBottom: '0.5em',
   },
+  santaClaus: {
+    backgroundColor: 'red',
+  },
+  philanthropist: {
+    backgroundColor: 'green',
+  },
 };
 
 const names = [
@@ -43,6 +49,7 @@ const names = [
 
 const levels = [
   null,
+  'Generous',
   'Giver',
   'Philanthropist',
   'Santa Claus',
@@ -55,10 +62,15 @@ class FriendsItem extends React.Component {
     const { classes } = this.props;
     const name = names[this.props.person];
     const timeText = this.props.timeText;
-    const giverLevel = (name.charCodeAt(0) + name.charCodeAt(1)) % levels.length;
+    const giverLevel = (name.charCodeAt(0) + name.charCodeAt(3)) % levels.length;
     const giverTag = levels[giverLevel];
+    let chipClass = null;
+
+    if (giverLevel === 4) chipClass = classes.santaClaus;
+    if (giverLevel === 3) chipClass = classes.philanthropist;
+
     const giverChip = (giverTag !== null ?
-      <Chip label={giverTag} color="primary" /> : null);
+      <Chip label={giverTag} color="primary" className={chipClass} /> : null);
 
     return (
       <Card>
@@ -73,7 +85,7 @@ class FriendsItem extends React.Component {
             <Typography className={classes.timestamp}>{timeText}</Typography>
             <Typography className={classes.title} component="div">
               {name}
-              &nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;
               {giverChip}
             </Typography>
             <Typography>{name} {this.props.eventText}.</Typography>
