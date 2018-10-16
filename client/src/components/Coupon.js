@@ -126,6 +126,7 @@ class CouponCard extends Component {
           className={classes.media}
           image={imageUrl}
           title={imageUrl}
+          style={used ? { opacity: '0.5' } : {}}
         >
         </CardMedia>
         <div className={classes.flexContainer}>
@@ -148,6 +149,7 @@ class CouponCard extends Component {
               color="primary"
               onClick={onClickCoupon}
               className={tabIndex === 0 ? classes.sendButton : classes.useButton}
+              disabled={used}
             >
               { tabIndex === 0 ? 'Give' : 'Use' }
             </Button>
