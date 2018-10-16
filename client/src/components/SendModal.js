@@ -49,7 +49,6 @@ class SimpleModal extends Component {
       action(input)
       openModal(false)()
     }
-    console.log('fwajepopjofawepjowe', input)
     return (
       <Modal
         aria-labelledby="simple-modal-title"

@@ -128,6 +128,7 @@ class App extends Component {
           action={tabIndex === 0 ? this.giveCoupon : this.useCoupon}
           isModalOpen={isModalOpen}
           openModal={this.openModal}
+          tabIndex={tabIndex}
         />
       </div>
     )
