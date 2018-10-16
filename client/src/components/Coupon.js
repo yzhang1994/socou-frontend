@@ -110,21 +110,6 @@ class CouponCard extends Component {
       allAvatars.splice(choice, 1);
     }
 
-    const sendButton = (
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={onClickCoupon}
-        className={classes.sendButton}
-      >
-        Send
-      </Button>
-    );
-
-    const friendAvatars = (
-      <FriendAvatars people={avatars} text="love this." />
-    );
-
     return (
       <Card className={classes.card}>
         <IconButton className={classes.loveButton}>
@@ -145,13 +130,20 @@ class CouponCard extends Component {
                 { tabIndex === 0 ? '??' : discount } % OFF
               </span>
             </Typography>
-            {tabIndex == 0 ? friendAvatars : null}
+            <FriendAvatars people={avatars} text="love this." />
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             {/* <IconButton aria-label="Share">
               <ShareIcon />
             </IconButton> */}
-            {tabIndex === 0 ? sendButton : null}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onClickCoupon}
+              className={classes.sendButton}
+            >
+              Send
+            </Button>
           </CardActions>
         </div>
       </Card>
