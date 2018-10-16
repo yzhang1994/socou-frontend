@@ -18,6 +18,7 @@ import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import FriendAvatars from './FriendAvatars';
 
 const styles = theme => ({
   card: {
@@ -29,6 +30,7 @@ const styles = theme => ({
   },
   actions: {
     display: 'flex',
+    width: '100px',
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -55,6 +57,18 @@ const styles = theme => ({
     backgroundColor: "rgba(0,0,0,0.2)",
     margin: "4px",
     padding: "8px",
+  },
+  flexContainer: {
+    display: "flex",
+  },
+  content: {
+    flex: 1,
+  },
+  offer: {
+    float: 'right',
+    fontSize: '0.8em',
+    color: 'grey',
+    lineHeight: '28px',
   }
 });
 
@@ -88,20 +102,23 @@ class CouponCard extends Component {
           title={imageUrl}
         >
         </CardMedia>
-        <CardContent>
-          <Typography className={classes.brandName}>{merchant}</Typography>
-          <Typography component="p">
-            { tabIndex === 0 ? '??' : discount } % OFF
-          </Typography>
-        </CardContent>
-        <CardActions className={classes.actions} disableActionSpacing>
-          {/* <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton> */}
-          <Button variant="contained" color="primary" onClick={onClickCoupon}>
-            Send
-          </Button>
-        </CardActions>
+        <div className={classes.flexContainer}>
+          <CardContent className={classes.content}>
+            <Typography component="p" className={classes.offer}>
+              { tabIndex === 0 ? '??' : discount } % OFF
+            </Typography>
+            <Typography className={classes.brandName}>{merchant}</Typography>
+            <FriendAvatars people={[1, 4, 5]}/>
+          </CardContent>
+          <CardActions className={classes.actions} disableActionSpacing>
+            {/* <IconButton aria-label="Share">
+              <ShareIcon />
+            </IconButton> */}
+            <Button variant="contained" color="primary" onClick={onClickCoupon}>
+              Send
+            </Button>
+          </CardActions>
+        </div>
       </Card>
     );
   }
