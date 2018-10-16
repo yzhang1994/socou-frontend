@@ -42,9 +42,11 @@ const names = [
 
 
 class FriendsItem extends React.Component {
+
   render() {
     const { classes } = this.props;
     const name = names[this.props.person];
+    const timeText = this.props.timeText;
 
     return (
       <Card>
@@ -56,7 +58,7 @@ class FriendsItem extends React.Component {
             />
           </div>
           <div className={classes.flexRight}>
-            <Typography className={classes.timestamp}>Today</Typography>
+            <Typography className={classes.timestamp}>{timeText}</Typography>
             <Typography className={classes.title}>{name}</Typography>
             <Typography>{name} {this.props.eventText}.</Typography>
           </div>
@@ -70,6 +72,11 @@ FriendsItem.propTypes = {
   classes: PropTypes.object.isRequired,
   person: PropTypes.number.isRequired,
   eventText: PropTypes.string.isRequired,
+  timeText: PropTypes.string,
+};
+
+FriendsItem.defaultProps = {
+  timeText: 'Today',
 };
 
 export default withStyles(styles)(FriendsItem);

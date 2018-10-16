@@ -40,12 +40,35 @@ class Friends extends React.Component {
           <FriendsItem
             person={4}
             eventText="loves Fry's Electronics"
+            timeText="Yesterday"
           />
         </Grid>
         <Grid item xs={12}>
           <FriendsItem
             person={3}
             eventText="received a coupon for Home Depot"
+            timeText="Yesterday"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FriendsItem
+            person={5}
+            eventText="received a coupon for Home Depot"
+            timeText="Yesterday"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FriendsItem
+            person={6}
+            eventText="loves PetSmart"
+            timeText="2 days ago"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FriendsItem
+            person={4}
+            eventText="received a coupon for Dyson"
+            timeText="2 days ago"
           />
         </Grid>
       </Grid>
