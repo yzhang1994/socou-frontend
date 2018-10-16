@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Modal from '@material-ui/core/Modal';
 import Button from '@material-ui/core/Button';
-
-function getModalStyle() {
-  const top = 25;
-
-  return {
-    top: `${top}%`,
-    margin: 'auto',
-  };
-}
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
+import FriendList from './FriendList';
+import NewFriendForm from './NewFriendForm';
 
 const styles = theme => ({
   paper: {
@@ -23,41 +20,49 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
 class SimpleModal extends Component {
   state = {
-    open: false,
+    value: 0,
   };
 
-  handleOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
+  handleChange = (event, value) => {
+    this.setState({ value });
   };
 
   render() {
-    const { classes } = this.props;
-
+    const { classes, isModalOpen } = this.props;
+    const { value } = this.state
     return (
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        open={true}
+        open={isModalOpen}
         onClose={this.handleClose}
-        style={{display: 'flex', alignItems:'center',justifyContent:'center'}}
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <div className={classes.paper}>
-          <Typography variant="h6" id="modal-title">
-            Text in a modal
+          <Tabs
+            value={value}
+            indicatorColor="primary"
+            textColor="primary"
+            onChange={this.handleChange}
+          >
+            <Tab icon={<FavoriteIcon />} label="Friends List" />
+            <Tab icon={<PersonPinIcon />} label="Add New Friend" />
+          </Tabs>
+
+          <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
+            { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
           </Typography>
-          <Typography variant="subtitle1" id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-          {/* <SimpleModalWrapped /> */}
+          { value === 0 ? <FriendList /> : <NewFriendForm /> }
+          <Button variant="contained" color="primary" size="large">Send</Button>
         </div>
       </Modal>
     );
@@ -66,9 +71,10 @@ class SimpleModal extends Component {
 
 SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
 };
 
 // We need an intermediary variable for handling the recursive nesting.
 const SimpleModalWrapped = withStyles(styles)(SimpleModal);
 
-export default SimpleModalWrapped;
+export default SimpleModalWrapped
