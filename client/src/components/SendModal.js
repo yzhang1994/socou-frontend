@@ -43,23 +43,23 @@ class SimpleModal extends Component {
     const { classes } = this.props;
 
     return (
-        <Modal
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          open={true}
-          onClose={this.handleClose}
-          style={{display: 'flex', alignItems:'center',justifyContent:'center'}}
-        >
-          <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="h6" id="modal-title">
-              Text in a modal
-            </Typography>
-            <Typography variant="subtitle1" id="simple-modal-description">
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-            </Typography>
-            {/* <SimpleModalWrapped /> */}
-          </div>
-        </Modal>
+      <Modal
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        open={true}
+        onClose={this.handleClose}
+        style={{display: 'flex', alignItems:'center',justifyContent:'center'}}
+      >
+        <div className={classes.paper}>
+          <Typography variant="h6" id="modal-title">
+            Text in a modal
+          </Typography>
+          <Typography variant="subtitle1" id="simple-modal-description">
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+          {/* <SimpleModalWrapped /> */}
+        </div>
+      </Modal>
     );
   }
 }
