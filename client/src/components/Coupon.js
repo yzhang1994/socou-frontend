@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import classnames from 'classnames';
+import seedrandom from 'seedrandom';
+
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -50,6 +52,7 @@ const styles = theme => ({
   },
   brandName: {
     fontSize: "1.2em",
+    marginBottom: "0.5em",
   },
   loveButton: {
     float: "left",
@@ -69,6 +72,9 @@ const styles = theme => ({
     fontSize: '0.8em',
     color: 'grey',
     lineHeight: '28px',
+  },
+  sendButton: {
+    marginTop: '30px',
   }
 });
 
@@ -89,7 +95,17 @@ class CouponCard extends Component {
       merchant,
       usable,
       used,
-    } = coupon
+    } = coupon;
+
+    const rng = seedrandom(merchant);
+    const numAvatars = parseInt(Math.round(1 + rng() * 5));
+    const allAvatars = [1, 2, 3, 4, 5, 6];
+    const avatars = [];
+    for (let i = 0; i < numAvatars; i++) {
+      const choice = parseInt(rng() * allAvatars.length);
+      avatars.push(allAvatars[choice]);
+      allAvatars.splice(choice, 1);
+    }
 
     return (
       <Card className={classes.card}>
@@ -108,13 +124,18 @@ class CouponCard extends Component {
               { tabIndex === 0 ? '??' : discount } % OFF
             </Typography>
             <Typography className={classes.brandName}>{merchant}</Typography>
-            <FriendAvatars people={[1, 4, 5]}/>
+            <FriendAvatars people={avatars} text="love this." />
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             {/* <IconButton aria-label="Share">
               <ShareIcon />
             </IconButton> */}
-            <Button variant="contained" color="primary" onClick={onClickCoupon}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onClickCoupon}
+              className={classes.sendButton}
+            >
               Send
             </Button>
           </CardActions>

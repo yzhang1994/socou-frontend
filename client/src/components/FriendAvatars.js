@@ -23,19 +23,22 @@ class FriendAvatars extends React.Component {
   render() {
     const { classes } = this.props;
 
+    const avatars = this.props.people.map(value => (
+      <Avatar
+        alt="Person"
+        src={`/static/images/p${value}.jpg`}
+        className={classes.avatar}
+        key={`avatar-${value}`}
+      />
+    ));
+
     return (
-      <Typography className={classes.avatarContainer}>
-        {
-          this.props.people.map(value => (
-            <Avatar
-              alt="Person"
-              src={`/static/images/p${value}.jpg`}
-              className={classes.avatar}
-            />
-          ))
-        }
-        {this.props.text}
-      </Typography>
+      <div>
+        {avatars}
+        <Typography className={classes.avatarContainer}>
+          {this.props.text}
+        </Typography>
+      </div>
     );
   }
 }

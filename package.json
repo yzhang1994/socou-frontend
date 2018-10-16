@@ -26,6 +26,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "seedrandom": "^2.4.4",
     "web3": "^1.0.0-beta.33",
     "web3-eth": "^1.0.0-beta.36",
     "web3-utils": "^1.0.0-beta.36"
