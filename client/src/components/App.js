@@ -78,7 +78,11 @@ class App extends Component {
     const { selectedCouponId } = this.state
     console.log('giveCoupon', receiverAddress, selectedCouponId)
     const socouInstance = getSocouInstance()
-    return socouInstance.methods.giveCoupon(selectedCouponId, receiverAddress).call();
+    return socouInstance.methods.giveCoupon(selectedCouponId, receiverAddress).send({
+      from: getWeb3().eth.accounts[0]
+    }).then(receipt => {
+      console.log(receipt);
+    });
   }
 
   useCoupon = () => {
