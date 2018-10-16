@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import PersonIcon from '@material-ui/icons/PersonRounded';
 import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 
@@ -91,7 +92,7 @@ function Nav(props) {
               }}
             />
           </div>
-          <Button color="secondary" variant="contained">Login</Button>
+          <Button color="secondary" variant="contained"><PersonIcon /></Button>
         </Toolbar>
       </AppBar>
     </div>
