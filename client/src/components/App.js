@@ -21,7 +21,6 @@ class App extends Component {
   };
 
   handleTabChange = (event, tabIndex) => {
-    console.log("tabIndex", tabIndex);
     this.setState({ tabIndex });
   };
 
@@ -29,7 +28,6 @@ class App extends Component {
     const { isModalOpen } = this.state
 
     let pageContent = null;
-    console.log(this.state.tabIndex)
     switch (this.state.tabIndex) {
       case 0:
       case 1:
