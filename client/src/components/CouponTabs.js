@@ -18,6 +18,7 @@ class CenteredTabs extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
+    this.props.onChange(event, value);
   };
 
   render() {
@@ -43,6 +44,7 @@ class CenteredTabs extends React.Component {
 
 CenteredTabs.propTypes = {
   classes: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default withStyles(styles)(CenteredTabs);
