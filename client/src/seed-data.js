@@ -1,4 +1,4 @@
-export const data = [
+export const SEED_DATA = [
   {
     date: 'Dec 15, 2018',
     description: 'Shake Shack is an American fast casual restaurant chain based in New York City. It started out as a hot dog cart inside Madison Square Park in 2001.Hot town, Shack in the city! Our first-ever Dallas Shack is located in Uptown’s 11-acre office and retail complex, The Crescent. The Dallas Uptown Shack is located under a verdant canopy of trees, the perfect spot to kick back with a delicious ShackBurger and local beer, just steps from a corner park complete with lawn furniture and bocce ball. In addition to the Shack classics, the menu features the Dallas-exclusive Link Burger, a cheeseburger topped with griddled Pecan Lodge jalapeño cheese sausage link, pickles and ShackSauce.',
@@ -26,7 +26,7 @@ export const data = [
     offer: '??% off any dress',
     title: 'Target',
     address: 'Any location',
-  },  
+  },
   {
     date: 'Dec 22, 2018',
     description: 'Frappuccino is a trademarked brand of the Starbucks Corporation for a line of iced, blended coffee drinks. It consists of coffee or crème base, blended with ice and other various ingredients, usually topped with whipped cream and sauces.',
@@ -75,5 +75,5 @@ export const data = [
     offer: '??% off any $300 purchase',
     title: 'Nike',
     address: 'Any Nike store',
-  },              
+  },
 ]

@@ -1,0 +1,235 @@
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "couponIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "couponSetIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "holder",
+				"type": "address"
+			}
+		],
+		"name": "CouponCreated",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_couponSetIndex",
+				"type": "uint256"
+			},
+			{
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "createCoupon",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_merchant",
+				"type": "string"
+			},
+			{
+				"name": "_imageUrl",
+				"type": "string"
+			},
+			{
+				"name": "_discount",
+				"type": "uint256"
+			}
+		],
+		"name": "createCouponSet",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "couponId",
+				"type": "uint256"
+			},
+			{
+				"name": "receiver",
+				"type": "address"
+			}
+		],
+		"name": "giveCoupon",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "couponSetIndex",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "merchant",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "imageUrl",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"name": "discount",
+				"type": "uint256"
+			}
+		],
+		"name": "CouponSetCreated",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "couponId",
+				"type": "uint256"
+			}
+		],
+		"name": "useCoupon",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "couponId",
+				"type": "uint256"
+			}
+		],
+		"name": "getCoupon",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "couponSetId",
+				"type": "uint256"
+			}
+		],
+		"name": "getCouponSet",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "string"
+			},
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCouponSetsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getCouponsLength",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
