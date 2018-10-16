@@ -24,6 +24,8 @@ class App extends Component {
     tabIndex: 0,
   };
 
+  web3 = getWeb3()
+
   async componentDidMount() {
     if (!window.web3) {
       console.error('missing web3')
@@ -73,14 +75,17 @@ class App extends Component {
     const filteredCoupons = await Promise.all(filteredCouponsPromises)
     return filteredCoupons
   }
-
+  
   giveCoupon = (receiverAddress) => {
     const { selectedCouponId } = this.state
-    console.log('giveCoupon', receiverAddress, selectedCouponId)
     const socouInstance = getSocouInstance()
-    return socouInstance.methods.giveCoupon(selectedCouponId, receiverAddress).send({
-      from: getWeb3().eth.accounts[0]
-    }).then(receipt => {
+    return this.web3.eth.getAccounts()
+      .then((accounts) => {
+        return socouInstance.methods.giveCoupon(selectedCouponId, receiverAddress).send({
+          from: accounts[0],
+        })
+      })
+      .then(receipt => {
       console.log(receipt);
     });
   }
