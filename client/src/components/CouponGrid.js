@@ -18,32 +18,41 @@ const styles = theme => ({
   },
 });
 
-const CouponGrid = ({ classes, openModal }) => (
+const CouponGrid = ({ classes, coupons, openModal, setSelectedCouponId, tabIndex }) => (
   <div className={classes.root}>
     <Grid container spacing={24}>
-      {SEED_DATA.map(({
-        date,
-        description,
-        offer,
-        title,
-      }, i) => (
-        <Grid key={i} item xs={12} sm={12} md={6} lg={4}>
-          <Coupon
-            date={date}
-            description={description}
-            offer={offer}
-            title={title}
-            onClickCoupon={openModal(true)}
-          />
-        </Grid>
-      ))}
+      {coupons && coupons.map((coupon, i) => {
+        if (tabIndex === 0 && coupon.usable === true) return
+        if (tabIndex === 1 && coupon.usable === false) return
+        const onClickCoupon = () => {
+          setSelectedCouponId(coupon.couponId)()
+          openModal(true)()
+        }
+        return (
+          <Grid key={i} item xs={12} sm={12} md={6} lg={4}>
+            <Coupon
+              coupon={coupon}
+              onClickCoupon={onClickCoupon}
+              tabIndex={tabIndex}
+            />
+          </Grid>
+        )
+      })}
     </Grid>
   </div>
 );
 
 CouponGrid.propTypes = {
   classes: PropTypes.object.isRequired,
+  coupons: PropTypes.array,
   openModal: PropTypes.func.isRequired,
+  setSelectedCouponId: PropTypes.func.isRequired,
+  tabIndex: PropTypes.number,
 };
+
+CouponGrid.defaultProps = {
+  tabIndex: 0,
+  coupons: null,
+}
 
 export default withStyles(styles)(CouponGrid);

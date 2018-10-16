@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import FriendList from './FriendList';
+import TextField from '@material-ui/core/TextField';
 import NewFriendForm from './NewFriendForm';
 
 const styles = theme => ({
@@ -30,15 +31,25 @@ const styles = theme => ({
 class SimpleModal extends Component {
   state = {
     value: 0,
+    input: '',
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
   };
 
+  handleInputChange = (e) => {
+    this.setState({ input: e.target.value })
+  }
+
   render() {
-    const { classes, isModalOpen, openModal } = this.props;
-    const { value } = this.state
+    const { action, classes, isModalOpen, openModal } = this.props;
+    const { input, value } = this.state
+    const onSend = () => {
+      action(input)
+      openModal(false)()
+    }
+    console.log('fwajepopjofawepjowe', input)
     return (
       <Modal
         aria-labelledby="simple-modal-title"
@@ -61,8 +72,15 @@ class SimpleModal extends Component {
           <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
             { value === 0 ? 'Send this coupon to your friend!' : 'Send this coupon to a new friend!' }
           </Typography>
-          { value === 0 ? <FriendList /> : <NewFriendForm /> }
-          <Button variant="contained" color="primary" size="large" onClick={openModal(false)}>Send</Button>
+          { value === 0
+            ? <FriendList />
+            : (
+            <div style={{ padding: 16, paddingBottom: 32, width: '100%' }}>
+              <TextField onChange={this.handleInputChange} fullWidth label="Hashgraph Address" />
+            </div>
+            )
+          }
+          <Button variant="contained" color="primary" size="large" onClick={onSend}>Send</Button>
         </div>
       </Modal>
     );
@@ -70,6 +88,7 @@ class SimpleModal extends Component {
 }
 
 SimpleModal.propTypes = {
+  action: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
   isModalOpen: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,

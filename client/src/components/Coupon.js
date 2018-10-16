@@ -64,12 +64,18 @@ class CouponCard extends Component {
   render() {
     const {
       classes,
-      date,
-      description,
-      offer,
-      title,
+      coupon,
       onClickCoupon,
+      tabIndex,
     } = this.props;
+
+    const {
+      discount,
+      imageUrl,
+      merchant,
+      usable,
+      used,
+    } = coupon
 
     return (
       <Card className={classes.card}>
@@ -78,14 +84,14 @@ class CouponCard extends Component {
         </IconButton>
         <CardMedia
           className={classes.media}
-          image="/static/images/paella.jpg"
-          title="paella"
+          image={imageUrl}
+          title={imageUrl}
         >
         </CardMedia>
         <CardContent>
-          <Typography className={classes.brandName}>{title}</Typography>
+          <Typography className={classes.brandName}>{merchant}</Typography>
           <Typography component="p">
-            { offer }
+            { tabIndex === 0 ? '??' : discount } % OFF
           </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
@@ -103,18 +109,12 @@ class CouponCard extends Component {
 
 CouponCard.propTypes = {
   classes: PropTypes.object.isRequired,
-  date: PropTypes.string,
-  description: PropTypes.string,
-  offer: PropTypes.string,
-  title: PropTypes.string,
+  coupon: PropTypes.object,
   onClickCoupon: PropTypes.func.isRequired,
 };
 
 CouponCard.defaultProps = {
-  date: 'November 1, 2018',
-  description: 'Some BS here',
-  offer: '??% off your next instore purchase',
-  title: 'Target',
+  coupon: null,
 }
 
 export default withStyles(styles)(CouponCard);
