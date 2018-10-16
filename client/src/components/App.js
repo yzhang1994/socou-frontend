@@ -59,6 +59,7 @@ class App extends Component {
       const used = coupon[3]
 
       // if (holder !== getWeb3().eth.accounts[0]) return
+      if (used == true) return
       const set = await this.getCouponSet(couponSetIndex)
       const merchant = set[0]
       const imageUrl = set[1]
@@ -73,7 +74,7 @@ class App extends Component {
       }
     })
     const filteredCoupons = await Promise.all(filteredCouponsPromises)
-    return filteredCoupons
+    return filteredCoupons.filter(coupon => !!coupon)
   }
   
   giveCoupon = (receiverAddress) => {
