@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from '@material-ui/core/Avatar';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -40,6 +41,13 @@ const names = [
   'Yvonne Zhang',
 ];
 
+const levels = [
+  null,
+  'Giver',
+  'Philanthropist',
+  'Santa Claus',
+];
+
 
 class FriendsItem extends React.Component {
 
@@ -47,6 +55,10 @@ class FriendsItem extends React.Component {
     const { classes } = this.props;
     const name = names[this.props.person];
     const timeText = this.props.timeText;
+    const giverLevel = (name.charCodeAt(0) + name.charCodeAt(1)) % levels.length;
+    const giverTag = levels[giverLevel];
+    const giverChip = (giverTag !== null ?
+      <Chip label={giverTag} color="primary" /> : null);
 
     return (
       <Card>
@@ -59,7 +71,11 @@ class FriendsItem extends React.Component {
           </div>
           <div className={classes.flexRight}>
             <Typography className={classes.timestamp}>{timeText}</Typography>
-            <Typography className={classes.title}>{name}</Typography>
+            <Typography className={classes.title} component="div">
+              {name}
+              &nbsp;&nbsp;
+              {giverChip}
+            </Typography>
             <Typography>{name} {this.props.eventText}.</Typography>
           </div>
         </CardContent>
