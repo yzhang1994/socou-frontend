@@ -68,10 +68,13 @@ const styles = theme => ({
     flex: 1,
   },
   offer: {
-    float: 'right',
-    fontSize: '0.8em',
+    fontSize: '12px',
     color: 'grey',
-    lineHeight: '28px',
+  },
+  separator: {
+    fontSize: '12px',
+    padding: '0 4px',
+    color: 'grey',
   },
   sendButton: {
     marginTop: '30px',
@@ -120,10 +123,13 @@ class CouponCard extends Component {
         </CardMedia>
         <div className={classes.flexContainer}>
           <CardContent className={classes.content}>
-            <Typography component="p" className={classes.offer}>
-              { tabIndex === 0 ? '??' : discount } % OFF
+            <Typography className={classes.brandName}>
+              <span>{merchant}</span>
+              <span className={classes.separator}>&nbsp;&bull;&nbsp;</span>
+              <span className={classes.offer}>
+                { tabIndex === 0 ? '??' : discount } % OFF
+              </span>
             </Typography>
-            <Typography className={classes.brandName}>{merchant}</Typography>
             <FriendAvatars people={avatars} text="love this." />
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
