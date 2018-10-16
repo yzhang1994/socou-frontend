@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import deepPurple from '@material-ui/core/colors/deepPurple';
-import teal from '@material-ui/core/colors/teal';
+import deepOrange from '@material-ui/core/colors/deepOrange';
+import grey from '@material-ui/core/colors/grey';
 
 // import { Provider } from 'react-redux'
 
@@ -15,8 +15,8 @@ import App from './components/App'
 
 const theme = createMuiTheme({
   palette: {
-    primary: deepPurple,
-    secondary: teal,
+    primary: deepOrange,
+    secondary: grey,
   },
   typography: {
     useNextVariants: true,
