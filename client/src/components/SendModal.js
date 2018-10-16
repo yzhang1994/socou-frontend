@@ -30,8 +30,10 @@ const styles = theme => ({
     alignItems: 'center',
   },
   media: {
-    height: 0,
-    paddingTop: '100%',
+    // height: 0,
+    // paddingTop: '100%',
+    backgroundSize: 'auto',
+    backgroundColor: 'white'
   },
 });
 
@@ -64,10 +66,10 @@ class SimpleModal extends Component {
         onClose={openModal(false)}
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
-        <div className={classes.paper}>
+      <Fragment>
           { tabIndex === 0
             ? (
-              <Fragment>
+              <div className={classes.paper}>
                 <Tabs
                 value={value}
                 indicatorColor="primary"
@@ -77,9 +79,8 @@ class SimpleModal extends Component {
                   <Tab icon={<FavoriteIcon />} label="Friends List" />
                   <Tab icon={<PersonPinIcon />} label="Add New Friend" />
                 </Tabs>
-
                 <Typography variant="h5" id="modal-title" style={{ padding: 16 }}>
-                  { value === 0 ? ' this coupon to your friend!' : 'Give this coupon to a new friend!' }
+                  { value === 0 ? 'Give this coupon to your friend!' : 'Give this coupon to a new friend!' }
                 </Typography>
                 { value === 0
                   ? <FriendList />
@@ -89,25 +90,24 @@ class SimpleModal extends Component {
                   </div>
                   )
                 }
-              </Fragment>
+                <Button variant="contained" color="primary" size="large" onClick={onSend} styles={{ paddingTop: 32 }}>
+                  Give
+                </Button>
+              </div>
             )
-          : (
-              <Card>
-                <CardHeader
-                  title="Scan this QR Code to use coupon"
-                />
-                <CardMedia
+            : (
+              <div onClick={onSend} style={{ width: 300, height: 300 }}>
+                <img
                   className={classes.media}
-                  image="/static/images/QR.png"
+                  src="/static/images/QR.png"
                   title="QR CODE"
+                  height={300}
+                  width={300}
                 />
-              </Card>
+              </div>
             )
-            }
-            <Button variant="contained" color="primary" size="large" onClick={onSend}>
-              { tabIndex === 0 ? 'Give Coupon' : 'Use Coupon' }
-            </Button>
-        </div>
+          }
+        </Fragment>
       </Modal>
     );
   }
